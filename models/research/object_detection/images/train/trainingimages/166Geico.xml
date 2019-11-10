@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Geico</folder>
+	<filename>166Geico.jpg</filename>
+	<path>D:\shilpa\2019\PEG\Datasets\Labelled_Datasets\Geico_xmls\train\Geico\166Geico.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4896</width>
+		<height>3264</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Geico</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>4487</xmin>
+			<ymin>2006</ymin>
+			<xmax>4573</xmax>
+			<ymax>2069</ymax>
+		</bndbox>
+	</object>
+</annotation>
