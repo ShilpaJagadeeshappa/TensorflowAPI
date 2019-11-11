@@ -306,9 +306,13 @@ This is my path for the particular model,meta,data file already exported under o
 ![](step5_13.png)
 
  Change the below path as per above screenshot . “testing_images” folder contains all new images for detection.
+```
 PATH_TO_TEST_IMAGES_DIR = '/opt/modelGeico1/models/research/object_detection/testing_images'
+```
  Below code is used to change the number of new images 
+```
 TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image{}.jpg'.format(i)) for i in range(1, 13) ]
+```
 After making all these changes, run the code over new images to visualize the detection in jupyter.
 Trialing out different exported graphs/models for detection for the new image to locate and detect the object in the image accurately.
  Our results after detection-
