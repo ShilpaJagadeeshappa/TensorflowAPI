@@ -332,6 +332,77 @@ Trialing out different exported graphs/models for detection for the new image to
 ![](res4.png)
 
 
+# Documentations referred
+
+- Follow the link: https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/
+
+-  Link: https://github.com/tensorflow/models/tree/master/research/object_detection
+
+- Link: https://www.youtube.com/watch?v=eJcIntjgCbQ
+
+## Projects Built on Sikulix
+
+- Used for objects tracking in Stadiums or Arenas,Traffics,Networks,Banking sectors and Health care Hospitals.
+
+- Applied in aviation field to target the missile launch and target the geographical location using radar.
+
+- Applied in health care sector or hospitals to classify the cancereous cells.
+
+- Used to classify the satellite images and to deorbit the satellite and many more applications.
+
+-We also welcome submissions of applications and systems built by you and powered by TensorflowApi for listings here. Should you want your Tensorflow powered developments listed here, you can reach to us via our Contacts below.
+
+## Contact Developer
+
+-Shilpa Jagadeeshappa
+
+- Email: shilpatc25@gmail.com
+
+- Github:https://github.com/ShilpaJagadeeshappa
+
+- Facebook: https://www.facebook.com/shilpasj.25
+
+- LinkedIn: https://www.linkedin.com/in/shilpa-s-j-5b0792130/
+
+## Contributors
+
+We are inviting anyone who wishes to contribute to the Tensorflow project to reach to us.We give special thanks to Google Brain team for their incredible and excellent work in Tensorflow framework. Find below the contact details of those who have contributed immensely to the Tensorflow project.
+
+- Tensorflow: https://www.tensorflow.org/
+
+- Tensorflow by Google Brain Team: https://github.com/tensorflow/tensorflow
+
+- LinkedIn: https://www.linkedin.com/in/dynamicwebpaige
+
+- LinkedIn: https://www.linkedin.com/in/robert-crowe
+
+## References
+
+1. Bayesian Methods for Hackers: Probabilistic Programming and Bayesian Inference (Addison-Wesley Data & Analytics) by Davidson-Pilon.
+
+2. A study on Image Classification based on Deep Learning and Tensorflow by Mohd Azlan Abu.
+
+3. Deep learning: An introduction to framework by Ijariit Journal.
+
+4. An Overview of Google Brain and Its Applications by Shaun V Ault  and Mellory Helms.
+
+5. Tutorial on how to write a Deep Neural Network using google Tensorflow on Python 3.0 by Toh Weimin.
+
+6. Machine Learning Approach for Automatic Text Summarization Using Neural Networks by Meetkumar Patel.
+
+7. TensorFlow: A system for large-scale machine learning by Google Brain team.
+
+8. Pedestrian Detection Based On Opencv and Tensor Flow by Abhishika Baruah and A.B Kandali.
+
+9. Image Manipulation Detection using Deep Learning in Tensor Flow by Kalpana K. and Amritha P. P.
+
+10. Solution of the Ill-conditioned Load Flow Problem by the Tensor Method by Li Fan
+B.Eng. (Tianjin University, China) 
+
+11. A Cumulant- Tensor Based Probabilistic Load Flow Method by Pouya Amid and Dr. Curran Crawford.
+
+12. The use of geology tensor to add anisotropy for groundwater flow simulation by Andrea Borghi, Gabriel Courrioux and Philippe Renard.
+
 
 
 
