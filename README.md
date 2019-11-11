@@ -67,42 +67,42 @@ Currently, TensorFlow 1.10 has a built-in API for:
  # Steps in Machine learning for Object detection using Tensorflow
  
  Installations:
-''' 
+```
 - pip install pillow
 - pip install lxml
 - pip install jupyter
 - pip install matplotlib
 
-'''
+```
 
 git clone https://github.com/tensorflow/models.git or download the models file from link- https://github.com/tensorflow/models to our Ubuntu server/machine and extract it.
 
 On Ubuntu:
-'''
+```
 protoc object_detection/protos/*.proto --python_out=.
-'''
+```
 
 And...
 
-'''
+```
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 
-'''
+```
 If you get an error on the protoc command on Ubuntu, check the version you are running with protoc --version, if it's not the latest version, you might want to update. As of my writing of this, we're using 3.4.0. In order to update or get protoc, head to the protoc releases page. Download the python version, extract, navigate into the directory and then do:
-'''
+```
 sudo ./configure
 sudo make check
 sudo make install
-'''
+```
 On Windows:
 Head to the protoc releases page and download the protoc-3.4.0-win32.zip, extract it, and you will find protoc.exe in the bin directory.
 You can move this to something more appropriate if you like, or leave it here. I eventually put mine in program files, making a "protoc" directory and dropping it in there.
 Now, from within the models (or models-master) directory, you can use the protoccommand like so:
-'''
+```
 "C:/Program Files/protoc/bin/protoc" object_detection/protos/*.proto --python_out=.
 
 Next, open terminal/cmd.exe from the models/object_detection directory
-'''
+```
 - Step-1: Gather all kinds of images (i.e., permutation and combinations of ways/possibilities/degrees that  the object can exist in the image in a 3D space)  for the multiple objects that is of our interest. Divide the image dataset into test and train folders wherein 80% of images must be in train folder and 20% in test folder.For example in our case it is 500 images of Geico in train set and 100 images in test set.
 
 - Step-2: Annotate/plot the bounding boxes for the object using LabelImg  tool to generate xml for each corresponding image in test and train folders as below screenshot.
@@ -116,13 +116,13 @@ This generates xmls in pascal voc dataset format.
 
 Within the xml_to_csv script, change the 2nd line with train folder and 4th line with corresponding 
 'train_labels.csv’. Similarly for test folder also.
-'''
+```
 def main():
     image_path = os.path.join(os.getcwd(), 'train')
     xml_df = xml_to_csv(image_path)
     xml_df.to_csv('train_labels.csv', index=None)
     print('Successfully converted xml to csv.')
- '''
+ ```
 
   Run the command “Python3  xml_to _csv.py “  from models/research/object_detection/images2 / in the terminal  for train and test folder twice.one for test folder and other for train folder.
   After running the above command the train_labels.csv and test_labels.csv are generated.
@@ -140,47 +140,47 @@ Edit  generate_tfrecord_2.py ,in our case we detect  Geico .So we changed 3rd li
 If we had many classes, then we would need to keep building out this if statement.
 
 ### TO-DO replace this with label map
-'''
+```
 def class_text_to_int(row_label):
     if row_label == 'Geico':
         return 1
     else:
         None
-   '''     
+   ```     
 And then:
 
 	Run the command-
-'''
-#### From models/research
+```
+From models/research
 protoc object_detection/protos/*.proto --python_out=.
 
-'''
+```
 
 
   If we get an error on the protoc command on Ubuntu, check the version we are running with protoc --version, if it's not the latest version, we might want to update. As of my writing of this, we're using 3.4.0. In order to update or get protoc, head to the protoc releases page. Download the python version, extract, navigate into the directory and then do:
-'''
+```
 - sudo ./configure
 - sudo make check
 - sudo make install
-'''
+```
   After that, try the protoc command again (again, make sure you are issuing this from the research dir in my case).
 ### From models/research/
-'''
+```
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-'''
+```
   Finally, let's install the object_dection library formally by doing the following from within the models directory:
 sudo python3 setup.py install
 
   Now we can run the generate_tfrecord_2.py script. We will run it twice, once for the train TFRecord and once for the test TFRecord.
   Run the command to generate tf records-
 ### From models/research/object_detection/
-'''
+```
 
 python3 generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record --image_dir=images2/
 
 python3 generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/test.record --image_dir=images2/
 
-'''
+```
 
  Now, in our data directory, we should have train.record and test.record.
 
@@ -188,21 +188,21 @@ Step-5: Train Custom Object Detector using tf records for train and test set usi
 We are  going to go with mobilenet, using the following checkpoint and configuration file
 From models/research/object_detection
  Run the command-
-'''
+```
 wget https://raw.githubusercontent.com/tensorflow/models/master/object_detection/samples/configs/ssd_mobilenet_v1_pets.config
  
 wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz
-'''
+```
 
 Put the config in the training folder, and extract the ssd_mobilenet_v1 in the  models/object_detection folder
  Create label map as object-detection.pbtxt as below
 Inside training dir, add object-detection.pbtxt:
-'''
+```
 item {
   id: 1
   name: 'macncheese'
 }
-'''
+```
 
 In the configuration file, we need to search for all of the PATH_TO_BE_CONFIGURED points and change them. we may also want to modify batch size. Currently, it is set to 1 in my configuration file. Other models may have different batch sizes. If we get a memory error, we can try to decrease the batch size to get the model to fit in your VRAM. Finally, we also need to change the checkpoint name/path, num_classes to 1, num_examples to 12, and label_map_path: "training/object-detect.pbtxt"
 
@@ -214,7 +214,7 @@ num_classes=1 in our  case
 
 ![](step5_1.png)
 
-Change the batch size according to your system/server config.In our case, we have set it to                   1, since there was a memory issue.
+Change the batch size according to your system/server config.In our case, we have set it to 1, since there was a memory issue.
 
 ![](step5_2.png)
 
@@ -227,9 +227,11 @@ Set the label_map_path  under  train_input_reader :to  /opt/modelGeico1/models/r
 
 Set the input_path under eval_input_reader :  to /opt/modelGeico1/models/research/object_detection/data/test.record
 Set the label_map_path under eval_input_reader: to  /opt/modelGeico1/models/research/object_detection/data/object-detection.pbtxt
-	Save all changes made to config file and run the command-
+ Save all changes made to config file and run the command-
 Check for train.py file in “object_detection” folder, if its not found it must be inside object_detection/legacy/train.py which needs to be cut and pasted into “models/research/object_detection/ “ to run the below command.
+```
 python3 train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/ssd_mobilenet_v1_pets_Geico.config
+```
 Barring errors, you should see output like:
 
 
@@ -256,13 +258,13 @@ This is our training dir wherein all tensor board info ,meta,data,index files ar
 
 For us, in the models/object_detection directory, there is a script that does this for us: export_inference_graph.py Make sure we have all 3 files meta,data,index files for each step as training progresses in training dir
 To run this, we just need to pass in our checkpoint and our pipeline config, then wherever you want the inference graph to be placed. For example:
-'''
+```
 python3 export_inference_graph.py \
 	--input_type image_tensor \
 	--pipeline_config_path training/ssd_mobilenet_v1_pets_Geico.config \
     	--trained_checkpoint_prefix training/model.ckpt-192140 \
     	--output_directory Geico192140_inference_graph
-'''
+```
 Below screenshot depicts the inference graphs exported for my ssd model during training-
 
 ![](step5_9.png)
@@ -272,9 +274,9 @@ Below screenshot depicts the inference graphs exported for my ssd model during t
 If you get an error about no module named 'nets', then you need to re run:
 
 ### From models/research/
-'''
+```
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-'''
+```
 ### switch back to object_detection after this and re run the above command
 
 1. Export the inference graphs for respective models created due to training by monitoring different types of losses and learning rate/accuracy of our OS on tensorboard in real time.
@@ -295,9 +297,9 @@ Edit  object_detection_tutorial.ipynb according to below screenshots
 
 ![](step5_13.png)
 
-'''
+```
 Edit  MODEL_NAME = ' /opt/modelGeico1/models/research/object_detection/Geico153099_inference_graph’
-'''
+```
 This is my path for the particular model,meta,data file already exported under object_detection folder.
 
 
