@@ -11,6 +11,12 @@ TensorFlow is Google Brain's second-generation system. Version 1.0.0 was release
 
 TensorFlow computations are expressed as stateful dataflow graphs. The name TensorFlow derives from the operations that such neural networks perform on multidimensional data arrays, which are referred to as tensors. During the Google I/O Conference in June 2016, Jeff Dean stated that 1,500 repositories on GitHub mentioned TensorFlow, of which only 5 were from Google.
 
+Below are the images showcasing the architecture and working.
+
+![](tf1.png)
+
+![](tf2.png)
+
 ## Tensor processing unit (TPU)
 
 In May 2017, Google announced a software stack specifically for mobile development, TensorFlow Lite.In January 2019, TensorFlow team released a developer preview of the mobile GPU inference engine with OpenGL ES 3.1 Compute Shaders on Android devices and Metal Compute Shaders on iOS devices.In May 2019, Google announced that their TensorFlow Lite Micro (also known as TensorFlow Lite for Microcontrollers) and ARM's uTensor would be merging.
