@@ -138,9 +138,9 @@ def main():
 
   Place test and train folders  in models/research/object_detection  as per the below structure in screenshot. That is we need to copy and paste all train and test images and corresponding  xmls outside the test and train folder as below screenshot. 
 
-![](step4.jpg)
+![](step4.png)
 
-![](step4_1.jpg)
+![](step4_1.png)
 
 Edit  generate_tfrecord_2.py ,in our case we detect  Geico .So we changed 3rd line of code to “Geico”(one class).
 If we had many classes, then we would need to keep building out this if statement.
