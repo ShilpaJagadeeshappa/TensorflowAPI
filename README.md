@@ -249,9 +249,9 @@ Below screenshot depicts the inference graphs exported for my ssd model during t
 
 If you get an error about no module named 'nets', then you need to re run:
 
-# From models/research/
+### From models/research/
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-# switch back to object_detection after this and re run the above command
+### switch back to object_detection after this and re run the above command
 
 1.	Export the inference graphs for respective models created due to training by monitoring different types of losses and learning rate/accuracy of our OS on tensorboard in real time.
 
