@@ -95,16 +95,16 @@ Now, from within the models (or models-master) directory, you can use the protoc
 
 Next, open terminal/cmd.exe from the models/object_detection directory
 
-### Step-1: Gather all kinds of images (i.e., permutation and combinations of ways/possibilities/degrees that  the object can exist in the image in a 3D space)  for the multiple objects that is of our interest. Divide the image dataset into test and train folders wherein 80% of images must be in train folder and 20% in test folder.For example in our case it is 500 images of Geico in train set and 100 images in test set.
+- Step-1: Gather all kinds of images (i.e., permutation and combinations of ways/possibilities/degrees that  the object can exist in the image in a 3D space)  for the multiple objects that is of our interest. Divide the image dataset into test and train folders wherein 80% of images must be in train folder and 20% in test folder.For example in our case it is 500 images of Geico in train set and 100 images in test set.
 
-### Step-2: Annotate/plot the bounding boxes for the object using LabelImg  tool to generate xml for each corresponding image in test and train folders as below screenshot.
+- Step-2: Annotate/plot the bounding boxes for the object using LabelImg  tool to generate xml for each corresponding image in test and train folders as below screenshot.
 
 ![](step2.jpg)
 
 This generates xmls in pascal voc dataset format.
 
-### Step-3: Convert  all  xml in train and test folders to Corresponding CSV’s as- train_labels.csv and test_labels.csv.
-- 	Place test and train folders inside images2 folder in models/research/object_detection    with  xml_to _csv.py
+- Step-3: Convert  all  xml in train and test folders to Corresponding CSV’s as- train_labels.csv and test_labels.csv.
+      	Place test and train folders inside images2 folder in models/research/object_detection    with  xml_to _csv.py
 
 Within the xml_to_csv script, change the 2nd line with train folder and 4th line with corresponding 
 'train_labels.csv’. Similarly for test folder also.
@@ -115,13 +115,13 @@ def main():
     xml_df.to_csv('train_labels.csv', index=None)
     print('Successfully converted xml to csv.')
 
-	Run the command “Python3  xml_to _csv.py “  from models/research/object_detection/images2 / in the terminal  for train and test folder twice.one for test folder and other for train folder.
-	After running the above command the train_labels.csv and test_labels.csv are generated.
-	Now we create a data directory in models/research/object_detection .We copy and paste csv’s generated in images2  folder into data folder.
+  Run the command “Python3  xml_to _csv.py “  from models/research/object_detection/images2 / in the terminal  for train and test folder twice.one for test folder and other for train folder.
+  After running the above command the train_labels.csv and test_labels.csv are generated.
+  Now we create a data directory in models/research/object_detection .We copy and paste csv’s generated in images2  folder into data folder.
 
 ### Step-4: Convert all CSV data to tfrecords as- train. record and test.record.
 
-	Place test and train folders  in models/research/object_detection  as per the below structure in screenshot. That is we need to copy and paste all train and test images and corresponding  xmls outside the test and train folder as below screenshot. 
+  Place test and train folders  in models/research/object_detection  as per the below structure in screenshot. That is we need to copy and paste all train and test images and corresponding  xmls outside the test and train folder as below screenshot. 
 
 ![](step4.jpg)
 
@@ -144,38 +144,38 @@ And then:
 protoc object_detection/protos/*.proto --python_out=.
 
 
-	If we get an error on the protoc command on Ubuntu, check the version we are running with protoc --version, if it's not the latest version, we might want to update. As of my writing of this, we're using 3.4.0. In order to update or get protoc, head to the protoc releases page. Download the python version, extract, navigate into the directory and then do:
+  If we get an error on the protoc command on Ubuntu, check the version we are running with protoc --version, if it's not the latest version, we might want to update. As of my writing of this, we're using 3.4.0. In order to update or get protoc, head to the protoc releases page. Download the python version, extract, navigate into the directory and then do:
 - sudo ./configure
 - sudo make check
 - sudo make install
 
-	After that, try the protoc command again (again, make sure you are issuing this from the research dir in my case).
+  After that, try the protoc command again (again, make sure you are issuing this from the research dir in my case).
 ### From models/research/
 export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 
-	Finally, let's install the object_dection library formally by doing the following from within the models directory:
+  Finally, let's install the object_dection library formally by doing the following from within the models directory:
 sudo python3 setup.py install
 
-	Now we can run the generate_tfrecord_2.py script. We will run it twice, once for the train TFRecord and once for the test TFRecord.
+  Now we can run the generate_tfrecord_2.py script. We will run it twice, once for the train TFRecord and once for the test TFRecord.
   	Run the command to generate tf records-
-# From models/research/object_detection/
+### From models/research/object_detection/
 
 python3 generate_tfrecord.py --csv_input=data/train_labels.csv --output_path=data/train.record --image_dir=images2/
 
 python3 generate_tfrecord.py --csv_input=data/test_labels.csv --output_path=data/test.record --image_dir=images2/
 
-	Now, in our data directory, we should have train.record and test.record.
+ Now, in our data directory, we should have train.record and test.record.
 
 Step-5: Train Custom Object Detector using tf records for train and test set using a pre-trained model and then using transfer learning approach.
 We are  going to go with mobilenet, using the following checkpoint and configuration file
 From models/research/object_detection
-	Run the command-
+ Run the command-
 wget https://raw.githubusercontent.com/tensorflow/models/master/object_detection/samples/configs/ssd_mobilenet_v1_pets.config
  
 wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017.tar.gz
 
 Put the config in the training folder, and extract the ssd_mobilenet_v1 in the  models/object_detection folder
-	Create label map as object-detection.pbtxt as below
+ Create label map as object-detection.pbtxt as below
 Inside training dir, add object-detection.pbtxt:	
 item {
   id: 1
@@ -225,7 +225,7 @@ This runs on 172.19.19.225:6006 (visit in our browser)
 
 ![](step5_6.png)
 
-	When  the process of training has started and simultaneously  when tensorboard shows up the loss to be below 1 we can start exporting the graphs by checking out for every step of epochs wherein the tensorboard info and meta,data,index files are getting saved to training dir under models/research/object_detection path.We can stop the training once the loss has reached  <1 in tensorboard.
+ When  the process of training has started and simultaneously  when tensorboard shows up the loss to be below 1 we can start exporting the graphs by checking out for every step of epochs wherein the tensorboard info and meta,data,index files are getting saved to training dir under models/research/object_detection path.We can stop the training once the loss has reached  <1 in tensorboard.
 
 ![](step5_7.png)
 
@@ -256,10 +256,10 @@ export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
 1.	Export the inference graphs for respective models created due to training by monitoring different types of losses and learning rate/accuracy of our OS on tensorboard in real time.
 
 2.	Increase/Decrease the batch size to avoid memory issues depending on your system configuration to handle data.
-Step-6: Testing Custom Object Detector –
+- Step-6: Testing Custom Object Detector –
 Now, we're just going to use the sample notebook, edit it, and see how our model does on some testing images. I copied some of my models/research/object_detection/testing_images into the  models/research/object_detection/test_images directory, and renamed them to be image3.jpg, image4.jpg...etc.
-	Booting up jupyter notebook and opening the object_detection_tutorial.ipynb, let's make a few changes. First, head to the Variables section, and let's change the model name, and the paths to the checkpoint and the labels:
-	Open jupyter notebook from the path models/research/object-detection as below screenshot.
+ Booting up jupyter notebook and opening the object_detection_tutorial.ipynb, let's make a few changes. First, head to the Variables section, and let's change the model name, and the paths to the checkpoint and the labels:
+ Open jupyter notebook from the path models/research/object-detection as below screenshot.
 
 ![](step5_11.png)
 
@@ -277,13 +277,13 @@ This is my path for the particular model,meta,data file already exported under o
 
 ![](step5_13.png)
 
-	Change the below path as per above screenshot . “testing_images” folder contains all new images for detection.
+ Change the below path as per above screenshot . “testing_images” folder contains all new images for detection.
 PATH_TO_TEST_IMAGES_DIR = '/opt/modelGeico1/models/research/object_detection/testing_images'
-	Below code is used to change the number of new images 
+ Below code is used to change the number of new images 
 TEST_IMAGE_PATHS = [ os.path.join(PATH_TO_TEST_IMAGES_DIR, 'image{}.jpg'.format(i)) for i in range(1, 13) ]
 After making all these changes, run the code over new images to visualize the detection in jupyter.
 Trialing out different exported graphs/models for detection for the new image to locate and detect the object in the image accurately.
-	Our results after detection-
+ Our results after detection-
 
 ![](res1.png)
 
