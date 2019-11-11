@@ -332,7 +332,7 @@ Trialing out different exported graphs/models for detection for the new image to
 ![](res4.png)
 
 
-# Documentations referred
+## Documentations referred
 
 - Follow the link: https://pythonprogramming.net/introduction-use-tensorflow-object-detection-api-tutorial/
 
@@ -340,13 +340,15 @@ Trialing out different exported graphs/models for detection for the new image to
 
 - Link: https://www.youtube.com/watch?v=eJcIntjgCbQ
 
-## Projects Built on Sikulix
+## Projects built on Tensorflow
 
 - Used for objects tracking in Stadiums or Arenas,Traffics,Networks,Banking sectors and Health care Hospitals.
 
 - Applied in aviation field to target the missile launch and target the geographical location using radar.
 
 - Applied in health care sector or hospitals to classify the cancereous cells.
+
+- ImageAI by Moses and John Olafenwa brothers in optimizing the working of tensorflow.
 
 - Used to classify the satellite images and to deorbit the satellite and many more applications.
 
